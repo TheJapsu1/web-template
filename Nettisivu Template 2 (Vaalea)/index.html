@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <head>
+        <link rel="shortcut icon" href="favicon.ico" />
+        <title>Yritys</title>
+        <link rel="stylesheet" href="styles.css">
+        <script type="text/javascript" src="js.js"></script>
+        <script type="text/javascript" src="https://smtpjs.com/v3/smtp.js"></script>
+
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJK-SmGmxuW77E4Es2GQE9QDNYoPGtpmI&callback=initMap&libraries=&v=weekly" defer></script>
+        <style type="text/css">
+                /* Set the size of the div element that contains the map */
+                #map {
+              height: 400px;
+              /* The height is 400 pixels */
+              width: 100%;
+              /* The width is the width of the web page */
+            }
+        </style>
+        <script>
+            // Initialize and add the map
+            function initMap()
+            {
+              // The location of the workshop
+              const pinpoint = { lat: 62, lng: 24 };
+              // The map, centered at the pinpointed workshop
+              const map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 10,
+                center: pinpoint,
+              });
+              // The marker, positioned at workshop
+              const marker = new google.maps.Marker({
+                position: pinpoint,
+                map: map,
+              });
+            }
+        </script>
+
+    <!--    Google ReCaptcha Integration
+        <script type="text/javascript">
+            var onloadCallback = function() {
+              grecaptcha.render('submit', {
+                'sitekey' : '6LeByuwZAAAAAJPoKedau8VBElBztpgbtFzzThgu'
+              });
+            };
+        </script>
+    -->
+    </head>
+    
+    <body>
+        <div id="navbar">
+            <div class="logo" style="background-color: #ffffff;">
+                <h1 style="font-family: Arcon; color: #299fff; padding: 10px 20px; margin: 0; text-align: center;">Yrityksen nimi/logo</h1>
+                <h4 style="font-family: Arcon; color: #303030; padding: 10px 20px; margin: 0; text-align: center; letter-spacing: 3px;">Yrityksen motto</h4>
+            </div>
+            <div class="tab" style="text-align: center;">
+                <button class="tablinks" onclick="openPage(event, 'mainPage')" id="defaultOpen">Etusivu</button>
+                <button class="tablinks" onclick="openPage(event, 'page1')">Sivu 1</button>
+                <button class="tablinks" onclick="openPage(event, 'page2')">Sivu 2</button>
+                <button class="tablinks" onclick="openPage(event, 'page3')">Sivu 3</button>
+                <button class="tablinks" onclick="openPage(event, 'page4')">Sivu 4</button>
+                <button class="tablinks" onclick="openPage(event, 'contacts')">Yhteystiedot</button>
+            </div>
+        </div>
+        <div class="content">    
+            <div id="mainPage" class="tabcontent">
+                <h3 class="headers">Otsikko</h3>
+               
+            </div>
+            <!---------------------------------------->
+            <div id="page1" class="tabcontent">
+                <h3 class="headers">Sivu 1</h3>
+                
+            </div>
+            <!---------------------------------------->
+            <div id="page2" class="tabcontent">
+                <h3 class="headers">Sivu 2</h3>
+                
+            </div>
+            <!---------------------------------------->    
+            <div id="page3" class="tabcontent">
+                <h3 class="headers">Sivu 3</h3>
+                
+            </div>
+            <!---------------------------------------->
+            <div id="page4" class="tabcontent">
+                <h3 class="headers">Sivu 4</h3>
+
+            </div>
+            <!---------------------------------------->
+            <div id="contacts" class="tabcontent">
+                <h3 class="headers" style="text-align:center;">Yhteystiedot</h3>
+                <main class="content">
+                    <div style=" display: flex; justify-content: center;">
+                        <fieldset id="contactForm" style="padding: 20px; line-height: 30px; background-color: rgba(0, 0, 0, .2); min-width: 40%;">
+                            <legend class="fieldLegend">Yhteydenottolomake</legend>
+                            <div>
+                                <label for="firstName">Etunimi:</label>
+                                <label for="lastName" style="padding-left: 73px;">Sukunimi:</label><br>
+                                <input class="inputField" type="text" id="firstName" name="firstName" required style="width: 125px">           
+                                <input class="inputField" type="text" id="lastName" name="lastName" required style="width: 171px"><br>
+                                <label for="phone" style="width: 300px">Puhelinnumero:</label><br>
+                                <input class="inputField" type="text" id="phone" name="phone" required style="width: 300px"><br>
+                                <label for="email" style="width: 300px">Sähköposti:</label><br>
+                                <input class="inputField" type="text" id="email" name="email" required style="width: 300px"><br>
+                                <label for="address">Osoite:</label><br>
+                                <input class="inputField" type="text" id="address" name="address" required style="width: 300px"><br>
+                                <label for="additionalInfo">Lisätietoja:</label><br>
+                                <textarea class="inputFieldXL" type="text" id="additionalInfo" name="additionalInfo" required></textarea><br>
+
+                                <button onClick="sendEmail()" id="submit">Lähetä</button>
+                                <p class="negAlertText" id="emailAlert">Tarkista sähköpostiosoite!</p>
+                                <p class="negAlertText" id="phoneAlert">Tarkista puhelinnumero!</p>
+                                <p class="posAlertText" id="successAlert">Viesti lähetetty onnistuneesti!</p>
+                                <!-- ReCaptcha Integration 
+                                <form action="?" method="POST">
+                                    [nappi tähän]
+                                    <br>
+                                    <input type="submit" value="Submit">
+                                </form>
+                                <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
+                                      async defer>
+                                </script>
+                                -->
+                            </div>
+                        </fieldset>
+
+                        <fieldset style="padding: 20px; background-color: rgba(0, 0, 0, .2); min-width: 40%;">
+                            <legend class="fieldLegend">Yhteystiedot</legend>
+                            <h3 style="margin: 0; font-family: Arcon; color: #299fff;">Yrityksen nimi</h3><br>
+                            <div style="width: fit-content; display: block;">
+                                <p style="margin: 0; font-family: Arcon; color: #000; font-size: 18px;">Katuosoite</p>
+                                <p style="margin: 0; font-family: Arcon; color: #000; font-size: 18px;">Paikkakunta</p>
+                                <p style="margin: 0; font-family: Arcon; color: #000; font-size: 18px;">p. <a id="phoneNbr" style="margin: 0; font-family: Arcon;" href="#">numero</a></p>
+                                <p style="margin: 0; font-family: Arcon; color: #000; font-size: 18px;">Y-tunnus: XXXXXXXX</p>
+                            </div>
+                            <br>
+                            <div>
+                                <h4 style="margin: 0; font-family: Arcon; color: #299fff; font-size: 18px;">Yhteyshenkilön nimi</h4>
+                                <p style="margin: 0; font-family: Arcon; color: #000; font-size: 18px;">p. <a id="phoneNbr" style="margin: 0; font-family: Arcon;" href="#">numero</a></p>
+                                <p style="margin: 0; font-family: Arcon; color: #000; font-size: 18px;">S-posti</p>
+                            </div>
+                            <br>
+                            <div id="map"></div>
+                        </fieldset>
+                    </div>
+                </main>
+            </div>
+        </div>
+        <div style="border-top: #299fff 2px solid; margin: 20px 13%; padding: 20px 0px;">
+            <h3 style="margin: 0; font-family: Arcon; color: #299fff; text-align: center;">Yrityksen nimi</h3><br>
+                <div style="width: fit-content; display: block; margin: 0 auto; text-align: center;">
+                    <p style="margin: 0; font-family: Arcon; color: #000;">Katuosoite, Paikkakunta</p>
+                    <p style="margin: 0; font-family: Arcon; color: #000;">p. <a id="phoneNbr" style="margin: 0; font-family: Arcon;" href="#">numero</a></p>
+                </div>
+        </div>
+    </body>
+</html>
