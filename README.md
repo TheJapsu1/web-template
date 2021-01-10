@@ -4,4 +4,4 @@ HTML and CSS mostly by [DFN](https://github.com/henrikoivuranta "Dfn's github"),
 
 The site has a fully functional contact form, with input validation!
 
-## You can visit the site [here!](https://thejapsu1.github.io/nc-kolarikorjaus/ "nc-kolarikorjaus")
+## You can visit the site [here!](https://thejapsu1.github.io/web-template/ "template")
